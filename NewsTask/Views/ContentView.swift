@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var newsItems = [NewsItem]()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        NavigationView {
+            
+            List {
+                
+            }
+            .navigationTitle("News")
+        }
     }
 }
 
