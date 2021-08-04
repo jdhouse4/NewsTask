@@ -74,18 +74,18 @@ struct ContentView: View {
                             
                             // Get all the news items from the 5 links
                             group.addTask {
-                                
+
                                 let url = URL(string: "https://www.hackingwithswift.com/samples/news-\(i).json")!
-                                
+
                                 // Get the data
                                 let (data, _) = try await URLSession.shared.data(from: url)
-                                
+
                                 // Just in case task was cancelled
                                 try Task.checkCancellation()
-                                
+
                                 // Decode the data from JSON into Swift structures
                                 return try JSONDecoder().decode([NewsItem].self, from: data)
-                                
+
                             }
                                                         
                         }
@@ -104,8 +104,6 @@ struct ContentView: View {
                         return allNewsItems.sorted(by: { lhs, rhs in
                             lhs.id < rhs.id
                         })
-
-                        
                     }
                 } catch {
                     print(error.localizedDescription)
